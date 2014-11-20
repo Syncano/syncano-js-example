@@ -84,7 +84,7 @@
         syncano.Data.get(projectId, 'Default', {limit: 1, order: 'DESC'}, function(list){
             hideLoader();
             if(list.length){
-                displayText('Last message: ' + list[0].title);
+                displayText('Last message: ' + list[0].text);
             } else {
                 displayText('No stored messages!');
             }
@@ -95,7 +95,7 @@
         var message = window.prompt('Enter a message to be stored');
         if(message){
             showLoader();
-            syncano.Data.new(projectId, 'Default', {title: message}, function(){
+            syncano.Data.new(projectId, 'Default', {title: 'Message', text: message}, function(){
                 hideLoader();
                 displayText('Saved!');
             });
