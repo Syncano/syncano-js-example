@@ -81,7 +81,7 @@
 
     function loadData(){
         showLoader();
-        syncano.Data.get(projectId, 'Default', {limit: 1, order: 'DESC'}, function(list){
+        syncano.Data.get(projectId, 'Default', {limit: 1, order: 'DESC', folders:['Default']}, function(list){
             hideLoader();
             if(list.length){
                 displayText('Last message: ' + list[0].text);
@@ -95,7 +95,7 @@
         var message = window.prompt('Enter a message to be stored');
         if(message){
             showLoader();
-            syncano.Data.new(projectId, 'Default', {title: 'Message', text: message}, function(){
+            syncano.Data.new(projectId, 'Default', {title: 'Message', text: message, folder: 'Default'}, function(){
                 hideLoader();
                 displayText('Saved!');
             });
